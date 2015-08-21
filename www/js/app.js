@@ -24,3 +24,15 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+
+.controller('AwesomeController', function($scope, $cordovaGoogleAnalytics) {
+  if(typeof analytics !== undefined) {
+    $cordovaGoogleAnalytics.trackView("Awesome Controller");
+  }
+
+  $scope.initEvent = function() {
+    if(typeof analytics !== undefined) {
+      $cordovaGoogleAnalytics.trackEvent("Category", "Action", "Label", 25);
+    }
+  }
+});
