@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $cordovaGoogleAnalytics) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -14,6 +14,13 @@ angular.module('starter', ['ionic'])
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
+    }
+
+    if(typeof analytics !== undefined) {
+      $cordovaGoogleAnalytics.startTrackerWithId("UA-XXXXXXXX-XX");
+      $cordovaGoogleAnalytics.setUserId('USER_ID');
+    } else {
+      console.log("Google Analytics Unavailable");
     }
   });
 })
